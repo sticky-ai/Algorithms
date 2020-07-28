@@ -5,12 +5,8 @@ def hangman(word, letters):
         if l in s:
             s.remove(l)
             if len(s) == 0:
-                if cnt >= 6:
-                    return False
-                else:
-                    return True
+                return False if cnt >= 6 else True
         else:
             cnt += 1
     
-    if len(s) != 0:
-        return False
+    return False if len(s) != 0 else True
