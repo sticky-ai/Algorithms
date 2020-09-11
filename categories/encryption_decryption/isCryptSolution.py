@@ -1,18 +1,15 @@
 def isCryptSolution(crypt, solution):
-    my_dict = dict(solution)
+    d = {k:v for k, v in solution}
     
-    trans = []
-    for word in crypt:
+    arr = []
+    for c in crypt:
         temp = ''
-        for char in word:
-             temp += my_dict[char]
-        trans.append(temp)
-
-    if trans[0] == '0' and trans[1] == '0':
-        return int(trans[0]) + int(trans[1]) == int(trans[2])
-
-    elif trans[0][0] == '0' or trans[1][0] == '0' or trans[2][0] == '0':
-        return False
+        for i in c:
+            temp += str(d[i])
+        
+        if temp[0] == '0' and len(temp) > 1:
+            return False
+            
+        arr.append(int(temp))
     
-    return int(trans[0]) + int(trans[1]) == int(trans[2])
-
+    return True if arr[0] + arr[1] == arr[2] else False
