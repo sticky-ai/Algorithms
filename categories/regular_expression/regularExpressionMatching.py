@@ -1,4 +1,3 @@
 def regularExpressionMatching(s, p):
-    return s in re.findall(p, s)
-    #return True if re.search('^' + p + '$', s) else False
-    
+    reg = re.findall(p, s)
+    return s == reg[0] if len(reg) > 0 else False
