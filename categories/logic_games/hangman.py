@@ -1,12 +1,15 @@
 def hangman(word, letters):
-    s = list(set(word))
+    ans = ['0'] * len(word)
     cnt = 0
+    
     for l in letters:
-        if l in s:
-            s.remove(l)
-            if len(s) == 0:
-                return False if cnt >= 6 else True
+        if cnt >= 6: return False
+        
+        if l in word:
+            idxs = [i for i in range(len(word)) if word[i] == l]
+            for idx in idxs:
+                ans[idx] = word[idx]
         else:
             cnt += 1
-    
-    return False if len(s) != 0 else True
+        
+    return ''.join(ans) == word
