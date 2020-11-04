@@ -1,13 +1,7 @@
-from itertools import combinations
-
 def countSumOfTwoRepresentations3(n, l, r):
-    cnt = 0
+    s = []
     for i in range(l, r+1):
-        if i * 2 == n:
-            cnt += 1
-            
-    for c in combinations(range(l, r+1), 2):
-        if sum(c) == n:
-            cnt += 1
-    return cnt 
-            
+        for j in range(l, r+1):
+            if sum([i, j]) == n:
+                s.append(str(sorted([i, j])))
+    return len(set(s))
