@@ -1,0 +1,7 @@
+CREATE PROCEDURE gradeDistribution()
+BEGIN
+	SELECT Name, ID
+    FROM Grades
+    WHERE 2 * Final > Midterm1 + Midterm2
+    ORDER BY left(Name, 3) ASC, ID ASC;
+END
