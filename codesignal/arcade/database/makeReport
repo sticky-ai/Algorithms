@@ -1,0 +1,8 @@
+CREATE PROCEDURE marketReport()
+BEGIN
+	SELECT 
+        IFNULL(country, 'Total:'), 
+        COUNT(*) as competitors
+    FROM foreignCompetitors
+    GROUP BY COUNTRY WITH ROLLUP;
+END
