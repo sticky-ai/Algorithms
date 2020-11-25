@@ -1,0 +1,11 @@
+CREATE PROCEDURE combinationLock()
+BEGIN
+    -- Answer 1
+	SELECT ROUND(EXP(SUM(LOG(LENGTH(characters)))), 1) AS combinations
+    FROM discs;
+    
+    # Answer 2
+    -- SET @comb = 1;
+    -- SELECT max(@comb:= @comb * LENGTH(characters)) AS combinations
+END
+
