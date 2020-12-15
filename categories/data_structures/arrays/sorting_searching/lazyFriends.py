@@ -1,10 +1,4 @@
+
+from bisect import bisect_left, bisect_right
 def lazyFriends(houses, maxDist):
-    ans = []
-    maxRange = [range(h-maxDist, h+maxDist+1) for h in houses]
-    for mr in maxRange:
-        cnt = 0
-        for h in houses:
-            if h in mr:
-                cnt += 1
-        ans.append(cnt - 1)
-    return ans
+    return [bisect_right(houses, houses[i]+maxDist) - bisect_left(houses, houses[i]-maxDist)-1 for i in range(len(houses))]
