@@ -1,0 +1,5 @@
+CREATE PROCEDURE countriesInfo()
+BEGIN
+    SELECT COUNT(*), AVG(p), SUM(p)
+    FROM (TABLE countries) _(n, c, p);
+END
