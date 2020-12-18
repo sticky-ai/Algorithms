@@ -1,0 +1,16 @@
+CREATE PROCEDURE scholarshipsDistribution()
+
+-- 118 chars
+    SELECT c FROM (TABLE candidates) _(c, _)
+    WHERE c NOT IN (SELECT student_id FROM detentions)
+
+
+-- 122 chars
+    -- SELECT c FROM (TABLE candidates) _(c, _)
+    -- WHERE c NOT IN (SELECT s FROM (TABLE detentions) _(_, s))
+
+-- 183 chars
+	-- SELECT i FROM (TABLE candidates) _(i, n)
+    -- WHERE i NOT IN (SELECT candidate_id FROM candidates C, detentions D
+    --                            WHERE C.candidate_id = D.student_id);
+
