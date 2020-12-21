@@ -1,0 +1,7 @@
+CREATE PROCEDURE personalHobbies()
+SELECT n FROM (TABLE people_hobbies) _(n, h)
+WHERE h LIKE '%reading%sports%'
+
+CREATE PROCEDURE personalHobbies()
+SELECT n FROM (TABLE people_hobbies) _(n, h)
+WHERE h LIKE h '%sports%' AND h LIKE '%reading%'
