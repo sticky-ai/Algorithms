@@ -1,0 +1,10 @@
+CREATE PROCEDURE placesOfInterestPairs()
+BEGIN
+	SELECT 
+        t1.name AS place1, 
+        t2.name AS place2
+    FROM sights AS t1
+    JOIN sights AS t2 ON (t1.name < t2.name)
+    WHERE ST_DISTANCE(POINT(t1.x, t1.y), POINT(t2.x, t2.y)) < 5
+    ORDER BY place1, place2;
+END

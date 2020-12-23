@@ -1,0 +1,5 @@
+CREATE PROCEDURE userCountries()
+BEGIN
+    SELECT users.id, IF(country IS NULL, 'unknown', cities.country)
+    FROM users LEFT JOIN cities ON users.city = cities.city;
+END
