@@ -1,0 +1,19 @@
+/*Please add ; after each select statement*/
+CREATE PROCEDURE alarmClocks()
+BEGIN
+    DECLARE initial DATETIME;
+    DECLARE current DATETIME;
+    
+    SET initial = (SELECT input_date FROM userInput LIMIT 1);
+    SET current = initial;
+    
+    DROP TABLE IF EXISTS alarms;
+    CREATE TABLE alarms (alarm_date DATETIME);
+    
+    WHILE YEAR(initial) = YEAR(current) DO
+        INSERT INTO alarms(ALARM_DATE) VALUES(current);
+        SET current = DATE_ADD(current, INTERVAL 1 WEEK);
+    END WHILE;
+    
+    SELECT alarm_date FROM alarms;
+END
