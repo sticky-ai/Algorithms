@@ -1,0 +1,9 @@
+CREATE PROCEDURE netIncome()
+BEGIN
+	SELECT 
+        YEAR(date) AS year, 
+        QUARTER(date) AS quarter, 
+        SUM(CONVERT(profit, SIGNED) - CONVERT(loss, SIGNED)) AS net_profit
+    FROM accounting
+    GROUP BY year, quarter;
+END
