@@ -1,7 +1,6 @@
-def digitDegree(n):
-    cnt = 0
-    while n >= 10:
+def digitDegree(n, cnt = 0):
+    if len(str(n)) == 1:
+        return cnt 
+    else:
         cnt += 1
-        n = sum(int(i) for i in str(n))
-        print(n)
-    return cnt
+        return digitDegree(sum(map(int, str(n))), cnt)
