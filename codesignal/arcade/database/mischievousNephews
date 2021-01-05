@@ -9,3 +9,10 @@ BEGIN
         mischief_date,
         title;
 END
+
+CREATE PROCEDURE mischievousNephews()
+BEGIN
+	SELECT WEEKDAY(m) w, _.*
+    FROM (TABLE mischief) _(m, a, t)
+    ORDER BY w, length(a), a, m, t;
+END
