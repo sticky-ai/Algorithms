@@ -1,0 +1,10 @@
+CREATE PROCEDURE closestCells()
+BEGIN
+	SELECT 
+        a.id AS id1, 
+        (SELECT id
+         FROM positions b
+         WHERE a.id != b.id
+         ORDER BY power(a.x - b.x, 2) + power(a.y - b.y, 2) LIMIT 1) AS id2
+    FROM positions a;    
+END

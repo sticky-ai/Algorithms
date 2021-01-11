@@ -1,0 +1,10 @@
+CREATE PROCEDURE sunnyHolidays()
+BEGIN
+	SELECT *
+    FROM holidays
+    WHERE EXISTS (
+        SELECT * 
+        FROM weather
+        WHERE holidays.holiday_date = weather.sunny_date
+    );
+END
