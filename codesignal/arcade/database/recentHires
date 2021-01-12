@@ -1,0 +1,20 @@
+CREATE PROCEDURE recentHires()
+BEGIN
+    SELECT name AS names
+    FROM (
+        SELECT name, 1 AS dept
+        FROM (SELECT name FROM pr_department ORDER BY date_joined DESC, name LIMIT 5) PT
+
+        UNION ALL
+        
+        SELECT name, 2 AS dept
+        FROM (SELECT name FROM it_department ORDER BY date_joined DESC, name LIMIT 5) IT
+        
+        UNION ALL
+        
+        SELECT name, 3 AS dept 
+        FROM (SELECT name FROM sales_department ORDER BY date_joined DESC, name LIMIT 5) ST
+    ) T
+    ORDER BY dept, name;
+END
+
