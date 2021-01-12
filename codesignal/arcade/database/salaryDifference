@@ -1,0 +1,17 @@
+CREATE PROCEDURE salaryDifference()
+BEGIN
+    SELECT
+        IFNULL(
+            (SELECT 
+                (
+                    SELECT SUM(salary) FROM employees
+                    WHERE salary = (SELECT MAX(salary) FROM employees)) 
+                - 
+                (
+                    SELECT SUM(salary) FROM employees
+                    WHERE salary = (SELECT MIN(salary) FROM employees))
+            FROM employees
+            LIMIT 1
+            
+            ), 0) AS salary_diff;
+END
