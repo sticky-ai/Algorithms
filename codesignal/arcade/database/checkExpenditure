@@ -1,0 +1,8 @@
+CREATE PROCEDURE checkExpenditure()
+BEGIN
+    SELECT id, IF(SUM(expenditure_sum) < value, 0, SUM(expenditure_sum) - value) AS loss
+    FROM expenditure_plan, allowable_expenditure
+    WHERE WEEK(monday_date) BETWEEN allowable_expenditure.left_bound 
+    AND allowable_expenditure.right_bound
+    GROUP BY id;
+END
