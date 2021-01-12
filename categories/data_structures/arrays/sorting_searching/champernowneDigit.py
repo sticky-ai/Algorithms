@@ -1,9 +1,5 @@
 def champernowneDigit(n):
     s = ''
-    i = 1
-    while True:
+    for i in range(1, n+1):
         s += str(i)
-        i += 1
-        if len(s) > n+1:
-            break
-    return int(s[n-1])
+    return int(list(s)[n-1])
