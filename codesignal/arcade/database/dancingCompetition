@@ -1,0 +1,8 @@
+CREATE PROCEDURE dancingCompetition()
+BEGIN
+	select b.* from scores a, scores b group by 1 having 
+    (b.first_criterion in (min(a.first_criterion), max(a.first_criterion))) +
+    (b.second_criterion in (min(a.second_criterion), max(a.second_criterion))) +
+    (b.third_criterion in (min(a.third_criterion), max(a.third_criterion))) < 2;
+END
+
