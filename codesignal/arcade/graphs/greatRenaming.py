@@ -28,3 +28,8 @@ def greatRenaming(roadRegister):
                 roadRegister[i][j] = False
     
     return roadRegister
+
+
+# def greatRenaming(roadRegister):
+#     swap = lambda x: [x[-1]] + x[:-1]
+#     return swap([swap(i) for i in roadRegister])
