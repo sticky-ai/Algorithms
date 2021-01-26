@@ -1,3 +1,3 @@
 def strstr(s, x):
     p = re.search(x, s)
-    return -1 if p == None else p.span()[0]
+    return p.start() if p else -1
